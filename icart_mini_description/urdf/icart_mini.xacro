@@ -8,10 +8,19 @@
   <xacro:include filename="$(find icart_mini_description)/urdf/materials.xacro" />
   <xacro:include filename="$(find icart_mini_description)/urdf/icart_mini.gazebo"/>
 
+  <!--Base Footprint-->
+  <link name="base_footprint" />
+
+  <joint name="base_joint" type="fixed">
+    <origin xyz="0 0 0" />
+    <parent link="base_footprint" />
+    <child link="base_link" />
+  </joint>
+
   <!-- Base Link -->
   <link name="base_link">
     <collision>
-      <origin xyz="-0.15 0 0.1" rpy="0 0 0"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
       <geometry>
 	    <box size=".485 .43 .15"/>
       </geometry>
@@ -22,11 +31,11 @@
       <geometry>
 	    <box size=".485 .43 .15"/>
       </geometry>
-      <material name="orange"/>
+      <!-- <material name="orange"/> -->
     </visual>
 
     <collision name="collision">
-      <origin xyz="-0.325 0.0 0.05" rpy="0 1.5707 1.5707"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
       <geometry>
         <cylinder  length="0.03" radius="0.04625"/>
       </geometry>

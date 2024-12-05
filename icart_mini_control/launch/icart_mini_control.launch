@@ -1,12 +1,15 @@
 <launch>
-
   <!-- Load joint controller configurations from YAML file to parameter server -->
   <rosparam file="$(find icart_mini_control)/config/icart_mini_control.yaml" command="load"/>
 
   <!-- load the controllers -->
   <!-- publish /icart_mini/odom and /icart_mini/cmd_vel -->
+  <!-- <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args="joint_state_controller">
+  </node> -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
     output="screen" args="icart_mini joint_state_controller">
+    <!-- <remap from="/icart_mini/odom" to="odom" /> -->
   </node>
 
   <!-- convert joint states to TF transforms for rviz, etc -->
